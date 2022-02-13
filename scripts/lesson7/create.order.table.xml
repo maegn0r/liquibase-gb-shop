@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="before_create_table.SHOP_ORDER" author="kropotov.artem" context="postgresql" labels="order_table">
+        <tagDatabase tag="before_create_order_table"/>
+    </changeSet>
+
+    <changeSet id="create_table.SHOP_ORDER" author="kropotov.artem" context="postgresql" labels="order_table">
+        <createTable tableName="SHOP_ORDER">
+            <column name="ID" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ADDRESS" type="varchar(512)"/>
+            <column name="FIRSTNAME" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LASTNAME" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PHONE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MAIL" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUS" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DELIVERY_DATE" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="VERSION" type="INT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="varchar(255)"/>
+            <column name="CREATED_DATE" type="TIMESTAMP"/>
+            <column name="LAST_MODIFIED_BY" type="varchar(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
