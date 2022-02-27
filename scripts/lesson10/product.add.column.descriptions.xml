@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="before_product_add_column.DESCRIPTIONS" author="kropotov.artem" context="postgresql" labels="full_description_short_description">
+        <tagDatabase tag="before_product_add_column_descriptions"/>
+    </changeSet>
+
+    <changeSet id="product_add_column.DESCRIPTIONS" author="kropotov.artem" context="postgresql" labels="full_description_short_description">
+        <addColumn tableName="PRODUCT">
+            <column name="SHORT_DESCRIPTION" type="varchar(255)"/>
+            <column name="FULL_DESCRIPTION" type="varchar(2048)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

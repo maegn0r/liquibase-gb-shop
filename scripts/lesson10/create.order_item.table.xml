@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="before_create_table.ORDER_ITEM" author="kropotov.artem" context="postgresql" labels="order_item_table">
+        <tagDatabase tag="before_create_order_item_table"/>
+    </changeSet>
+
+    <changeSet id="create_table.ORDER_ITEM" author="kropotov.artem" context="postgresql" labels="order_item_table">
+        <createTable tableName="ORDER_ITEM">
+            <column name="ID" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="QUANTITY" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ITEM_PRICE" type="DECIMAL(8,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TOTAL_PRICE" type="DECIMAL(8,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRODUCT_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ORDER_ID" type="BIGINT">
+                <constraints unique="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="PRODUCT_ORDER" baseColumnNames="PRODUCT_ID" constraintName="FK_ORDER_ITEM_PRODUCT"
+                                 referencedTableName="PRODUCT" referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="PRODUCT_ORDER" baseColumnNames="ORDER_ID" constraintName="FK_ORDER_ITEM_SHOP_ORDER"
+                                 referencedTableName="SHOP_ORDER" referencedColumnNames="ID"/>
+
+    </changeSet>
+</databaseChangeLog>
