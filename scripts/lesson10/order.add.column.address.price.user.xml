@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd ">
+
+    <changeSet id="before_order_add_column.ADDRESS.PRICE.USER" author="kropotov.artem" context="postgresql" labels="address_price_user">
+        <tagDatabase tag="before_account_user_add_columns_email_and_status"/>
+    </changeSet>
+
+    <changeSet id="order_add_column.ADDRESS.PRICE.USER" author="kropotov.artem" context="postgresql" labels="address_price_user">
+        <addColumn tableName="SHOP_ORDER">
+            <column name="USER_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE" type="DECIMAL(8,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DELIVERY_PRICE" type="DECIMAL(8,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DELIVERY_ADDRESS_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+        </addColumn>
+
+        <addForeignKeyConstraint baseTableName="SHOP_ORDER" baseColumnNames="USER_ID" constraintName="FK_SHOP_ORDER_ACCOUNT_USER"
+                                 referencedTableName="ACCOUNT_USER" referencedColumnNames="ID"/>
+
+        <addForeignKeyConstraint baseTableName="SHOP_ORDER" baseColumnNames="DELIVERY_ADDRESS_ID" constraintName="FK_SHOP_ORDER_ADDRESS"
+                                 referencedTableName="ADDRESS" referencedColumnNames="ID"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -19,4 +19,10 @@
     <include file="lesson7/create.product_order.table.xml" relativeToChangelogFile="true"/>
 
     <include file="lesson8/account_user.email.status.phone.column.xml" relativeToChangelogFile="true"/>
+
+    <include file="lesson10/create.address.table.xml" relativeToChangelogFile="true"/>
+    <include file="lesson10/create.order_item.table.xml" relativeToChangelogFile="true"/>
+    <include file="lesson10/create.product_image.table.xml" relativeToChangelogFile="true"/>
+    <include file="lesson10/order.add.column.address.price.user.xml" relativeToChangelogFile="true"/>
+    <include file="lesson10/product.add.column.descriptions.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
