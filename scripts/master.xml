@@ -25,4 +25,6 @@
     <include file="lesson10/create.product_image.table.xml" relativeToChangelogFile="true"/>
     <include file="lesson10/order.add.column.address.price.user.xml" relativeToChangelogFile="true"/>
     <include file="lesson10/product.add.column.descriptions.xml" relativeToChangelogFile="true"/>
+
+    <include file="lesson11/product_order.drop.unique.constraint.order_id.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
